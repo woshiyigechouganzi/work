@@ -12,13 +12,13 @@ public class MyArrayListImpl<E> implements MyArrayList<E> {
     @Override
     public void add(E e) {
         if (size == volume.length) {
-            ScaleOut();
+            scaleOut();
         }
         volume[size] = e;
         size++;
     }
 
-    private void ScaleOut(){
+    private void scaleOut(){
         Object[] newVolume = new Object[volume.length * 2];
         System.arraycopy(volume, 0, newVolume, 0, volume.length);
         volume = newVolume;
@@ -29,7 +29,7 @@ public class MyArrayListImpl<E> implements MyArrayList<E> {
             throw new IndexOutOfBoundsException();
         }
         if (size == volume.length) {
-            ScaleOut();
+            scaleOut();
         }
         System.arraycopy(volume, index, volume, index+1, size - index);
         volume[index] = e;
